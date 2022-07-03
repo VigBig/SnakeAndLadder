@@ -26,7 +26,7 @@ public class SnakeAndLadder {
         return die;
     }
 
-    public int options(int playerTurn, int die, int position){
+    public int options(int playerNum, int die, int position){
 
         while(position <=MAX_POS){
             int option = (int)(Math.random() * 3);
@@ -34,16 +34,16 @@ public class SnakeAndLadder {
             switch(option){
                 case NO_PLAY:
 
-                    System.out.println("Player "+playerTurn+" remains at the same position :"+position);
+                    System.out.println("Player "+playerNum+" remains at the same position :"+position);
                     break;
 
                 case LADDER:
 
                     if( (position + die) > MAX_POS){
-                        System.out.println("Player "+playerTurn+" remains at the same position :"+position);
+                        System.out.println("Player "+playerNum+" remains at the same position :"+position);
                     }else{
                         position =position + die;
-                        System.out.println("Ladder ! Player "+playerTurn+" moves forward "+die+" places. Player is now at position :"+position);
+                        System.out.println("Ladder ! Player "+playerNum+" moves forward "+die+" places. Player is now at position :"+position);
                     }
 
                     break;
@@ -51,10 +51,10 @@ public class SnakeAndLadder {
                 case SNAKE:
 
                     if ( (position - die) <MIN_POS){
-                        System.out.println("Player "+playerTurn+" remains at the same position :"+position);
+                        System.out.println("Player "+playerNum+" remains at the same position :"+position);
                     }else{
                         position =position - die;
-                        System.out.println("Snake ! Player "+playerTurn+" moves backward "+die+" places. Player is now at position :"+position);
+                        System.out.println("Snake ! Player "+playerNum+" moves backward "+die+" places. Player is now at position :"+position);
                     }
 
                     break;
@@ -62,19 +62,13 @@ public class SnakeAndLadder {
             System.out.println();
 
             if (position == MAX_POS){
-                System.out.println("Player "+playerTurn+" reached position "+MAX_POS+"! Player wins!");
+                System.out.println("Player "+playerNum+" reached position "+MAX_POS+"! Player wins!");
                 break;
             }
 
             if (position == LADDER){
                 continue;
             }else{
-
-                if(playerTurn == 1){
-                    playerTurn =2;
-                }else{
-                    playerTurn =1;
-                }
 
                 break;
             }
