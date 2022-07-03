@@ -16,7 +16,6 @@ public class SnakeAndLadder {
         System.out.println("Welcome to the Snake and Ladder Game:");
         System.out.println();
 
-
         while(position <=MAX_POS){
             int option = (int)(Math.random() * 3);
 
@@ -31,8 +30,13 @@ public class SnakeAndLadder {
                     break;
 
                 case LADDER:
-                    position =position + die;
-                    System.out.println("Ladder ! Player moves forward "+die+" places. Player is now in position :"+position);
+
+                    if( (position +die) > MAX_POS){
+                        System.out.println("Player remains in same position :"+position);
+                    }else{
+                        position =position + die;
+                        System.out.println("Ladder ! Player moves forward "+die+" places. Player is now in position :"+position);
+                    }
 
                     break;
 
@@ -48,6 +52,11 @@ public class SnakeAndLadder {
                     break;
             }
             System.out.println();
+
+            if (position == MAX_POS){
+                System.out.println("Player reached position "+MAX_POS+"! Player wins!");
+                break;
+            }
         }
 
 
